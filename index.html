@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Beastmeds – Developer, Creator & Tech Builder</title>
+
+<meta name="description" content="Beastmeds – Entwickler aus Österreich. Minecraft Server, Bots, KI & Custom Systeme. Building digital experiences.">
+<meta name="keywords" content="Beastmeds, Minecraft Server, Discord Bot, Entwickler, Node.js, Java, AI, Plugins">
+<meta name="author" content="Beastmeds">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Mono:wght@400;700&family=Rajdhani:wght@400;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#050508;
+  --accent:#00ff88;
+  --accent2:#ff3d6b;
+  --text:#e8e8f0;
+  --muted:#6b6b80;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Rajdhani',sans-serif;
+  overflow:hidden;
+  cursor:none;
+}
+
+/* CURSOR */
+#cursor{
+  position:fixed;
+  width:10px;height:10px;
+  background:var(--accent);
+  border-radius:50%;
+  pointer-events:none;
+  transform:translate(-50%,-50%);
+}
+
+/* HERO */
+#hero{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+
+/* GLOW ORBS */
+.orb{
+  position:absolute;
+  border-radius:50%;
+  filter:blur(120px);
+  animation:float 20s infinite;
+}
+.orb1{
+  width:500px;height:500px;
+  background:rgba(0,255,136,0.15);
+  top:-100px;left:-100px;
+}
+.orb2{
+  width:400px;height:400px;
+  background:rgba(255,61,107,0.15);
+  bottom:-100px;right:-100px;
+}
+
+@keyframes float{
+  0%,100%{transform:translate(0,0);}
+  50%{transform:translate(100px,-80px);}
+}
+
+/* PARTICLES */
+.particle{
+  position:absolute;
+  width:2px;height:2px;
+  background:var(--accent);
+  border-radius:50%;
+  opacity:0;
+  animation:rise linear infinite;
+}
+@keyframes rise{
+  0%{transform:translateY(0);opacity:0;}
+  10%{opacity:1;}
+  100%{transform:translateY(-100vh);opacity:0;}
+}
+
+/* TITLE */
+.hero-name{
+  font-family:'Bebas Neue';
+  font-size:clamp(80px,18vw,200px);
+  letter-spacing:6px;
+  background:linear-gradient(90deg,#fff,var(--accent),#fff);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:glow 4s infinite;
+}
+
+@keyframes glow{
+  0%,100%{filter:drop-shadow(0 0 20px var(--accent));}
+  50%{filter:drop-shadow(0 0 60px var(--accent));}
+}
+
+.hero-sub{
+  font-family:'Space Mono';
+  letter-spacing:5px;
+  margin-top:10px;
+  color:var(--accent);
+}
+
+/* TEXT */
+.hero-desc{
+  max-width:700px;
+  margin-top:30px;
+  font-size:18px;
+  color:var(--muted);
+  line-height:1.7;
+}
+
+/* CTA */
+.btn{
+  margin-top:40px;
+  padding:16px 32px;
+  background:var(--accent);
+  color:#000;
+  text-decoration:none;
+  font-family:'Space Mono';
+  letter-spacing:2px;
+  transition:0.2s;
+}
+.btn:hover{
+  transform:translateY(-3px);
+  box-shadow:0 10px 40px rgba(0,255,136,0.4);
+}
+
+/* ABOUT */
+#about{
+  position:absolute;
+  bottom:40px;
+  text-align:center;
+  font-size:14px;
+  color:var(--muted);
+}
+</style>
+</head>
+
+<body>
+
+<div id="cursor"></div>
+
+<section id="hero">
+
+<div class="orb orb1"></div>
+<div class="orb orb2"></div>
+
+<h1 class="hero-name">BEASTMEDS</h1>
+<p class="hero-sub">BUILDING DIGITAL POWER</p>
+
+<p class="hero-desc">
+Ich bin <strong>Beastmeds</strong> – Entwickler & Creator aus Österreich.  
+Ich baue <strong>Systeme, Bots, Server und KI</strong>, die nicht nur funktionieren – sondern Eindruck machen.
+
+<br><br>
+
+Was als Minecraft angefangen hat, ist heute ein komplettes Tech-Universum:  
+<strong>Custom Plugins, Discord Bots, AI Tools und Full-Stack Systeme.</strong>
+
+<br><br>
+
+Ich denke nicht in Projekten.  
+Ich denke in <strong>Systemen, die wachsen.</strong>
+</p>
+
+<a href="https://github.com/Beastmeds" target="_blank" class="btn">VIEW GITHUB</a>
+
+</section>
+
+<div id="about">
+Made by Beastmeds ⚡
+</div>
+
+<script>
+// CURSOR
+const cursor=document.getElementById('cursor');
+document.addEventListener('mousemove',e=>{
+cursor.style.left=e.clientX+'px';
+cursor.style.top=e.clientY+'px';
+});
+
+// PARTICLES
+for(let i=0;i<40;i++){
+  const p=document.createElement('div');
+  p.className='particle';
+  p.style.left=Math.random()*100+'%';
+  p.style.animationDuration=(6+Math.random()*10)+'s';
+  p.style.animationDelay=(-Math.random()*10)+'s';
+  if(Math.random()>0.7) p.style.background='var(--accent2)';
+  document.body.appendChild(p);
+}
+</script>
+
+</body>
+</html>
